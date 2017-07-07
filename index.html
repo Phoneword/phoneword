@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="lib/main.js"></script>
+        <script src="lib/bundle.js"></script>
+        <script src="lib/watchBalance.js"></script>
     </head>
     <body>
         Phonetoken
+        <h1>Metamask balance</h1>
+        <button type="button" onClick="watchBalance();">Get balance</button>
+        <div></div>
+        <div id="coinbase"></div>
+        <div id="original"></div>
+        <div id="current"></div>
+        <div id="diff"></div>
     </body>
 </html>

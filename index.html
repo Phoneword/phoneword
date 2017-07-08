@@ -1,6 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <style>
+            html, body, .container-fluid, .row-fluid { height:100%;}
+        </style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="lib/bundle.js"></script>
         <script src="lib/watchBalance.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -8,14 +13,46 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     </head>
-    <body>
-        Phonetoken
-        <h1>Metamask balance</h1>
-        <button type="button" onClick="watchBalance();">Get balance</button>
-        <div></div>
-        <div id="coinbase"></div>
-        <div id="original"></div>
-        <div id="current"></div>
-        <div id="diff"></div>
+    <body >
+        <div class="container-fluid">            
+            <div class="row row-fluid" >            
+                <nav class="col-2 col-md-2 col-xs-2 sidebar" style="background-color:darkslategrey; ">
+                    <h2>Phoneword</h2>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                        <a class="nav-link " href="#">Identity <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Wallet</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Call</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Record</a>
+                        </li>
+                    </ul>
+                </nav>
+                <main class="col-10 col-md-10 col-xs-10">   
+                    <div class="row" style="background-color: #f7f7f9">
+                        <div class="col-11 col-sm-11 col-md-11"></div>
+                        <div class="col-1 col-md-1"><span class=" btn pull-right">
+                            <span>
+                                User
+                            </span>
+                        </div>
+                        
+                    </div>                
+                    <section class="row text-center placeholders">
+                            <button type="button" onClick="watchBalance();">Get balance</button>
+                            <div></div>
+                            <div id="coinbase"></div>
+                            <div id="original"></div>
+                            <div id="current"></div>
+                            <div id="diff"></div>
+                    </div>
+                </main>
+            </div>
+        </div>
     </body>
 </html>

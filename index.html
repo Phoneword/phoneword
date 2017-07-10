@@ -8,10 +8,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="lib/bundle.js"></script>
         <script src="lib/watchBalance.js"></script>
+
+        <!-- Todo: bundle these-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="http://cdn.peerjs.com/0.3/peer.js"></script>
+        <script type="text/javascript" src="lib/peer.js"></script>
+        <!-- End Todo-->
+   
     </head>
     <body >
         <div class="container-fluid">            
@@ -35,22 +41,65 @@
                 </nav>
                 <main class="col-10 col-md-10 col-xs-10">   
                     <div class="row" style="background-color: #f7f7f9">
-                        <div class="col-11 col-sm-11 col-md-11"></div>
+                        <div class="col-11 col-sm-11 col-md-11">
+                        </div>
                         <div class="col-1 col-md-1"><span class=" btn pull-right">
                             <span>
                                 User
                             </span>
                         </div>
-                        
+
                     </div>                
                     <section class="row text-center placeholders">
+                        <!-- Todo: React.js : loading screen -->
+                        <div>
                             <button type="button" onClick="watchBalance();">Get balance</button>
-                            <div></div>
-                            <div id="coinbase"></div>
-                            <div id="original"></div>
-                            <div id="current"></div>
-                            <div id="diff"></div>
-                    </div>
+                        </div>
+                        </br>
+                        <div></div>
+                        <div id="coinbase"></div>
+                        <div id="original"></div>
+                        <div id="current"></div>
+                        <div id="diff"></div>
+                        <!-- End Todo -->
+                    </section>
+                    <section class="row">
+                        <!--Video area -->
+                        <div id="video-container" class="col-12 col-md-12 col-xs-12 container-fluid" style=" padding:0px !important;">
+                            <video id="their-video" autoplay class="their-video w-40 pull-left" style="height:300px;"></video>
+                            <video id="my-video" muted="true" autoplay class="my-video w-40 pull-right" style="height:300px;"></video> 
+                        </div>
+                        <!--Get local audio/video stream-->
+                    </section>
+                    <section class="row">
+                        <div id="step1" class="col-12 col-md-12 col-xs-12">
+                            <p>Please click 'allow' on the top of the screen so we can access your webcam and microphone for calls</p>
+                            <div id="step1-error">
+                                <!-- Todo: add error if webcam mic not accesible
+                                <p>Failed to access the webcam and microphone. Make sure to run this demo on an http server and click allow when asked for permission by the browser.</p>
+                                -->
+                                <a href="#" id="step1-retry" class="button">Try again</a>
+                                <!-- End todo -->
+                            </div>
+                        </div>
+                    </section>
+                    <section class="row">
+                        <!--Make calls to others-->
+                        <div id="step2" class="col-12 col-md-12 col-xs-12">
+                            <p>Your id: <span id="my-id">...</span></p>
+                            <p><span id="subhead">Make a call</span><br>
+                                <input type="text" placeholder="Call user id..." id="callto-id">
+                                <a href="#" id="make-call">Call</a>
+                            </p>
+                        </div>
+                    </section>
+                    <section class="row">
+                        <!--Call in progress-->
+                        <div id="step3"  class="col-12 col-md-12 col-xs-12">
+                            <p>Currently in call with <span id="their-id">...</span></p>
+                            <p><a href="#" id="end-call">End call</a></p>
+                        </div>
+                    </section>
                 </main>
             </div>
         </div>

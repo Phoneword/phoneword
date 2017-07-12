@@ -8,6 +8,9 @@
     <meta name="author" content="">
     <!--<link rel="icon" href="../../favicon.ico">-->
     <title>Phoneword</title>
+
+      <script src="lib/bundle.js"></script>
+      <script src="lib/watchBalance.js"></script>
       <!-- Todo: bundle these-->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
       <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
@@ -18,7 +21,23 @@
       <script src="https://use.fontawesome.com/598e365cb7.js"></script>
       <!-- End Todo-->
       <style>
+        html, body{
+          height:100%;
+           background-color: #2e353d;
+        }
+        .dialer-button{
+          width: 100%;
+          background-color: #23282e;
+          color: #e1ffff;
+          border:none;
+        }
+        .dialer-table{
+          border-color: #2e353d;
+          background-color: #2e353d;
+        }
         .nav-side-menu {
+          border-right:solid;
+          border-color:#4f5b69;
           overflow: auto;
           font-family: verdana;
           font-size: 12px;
@@ -192,17 +211,22 @@
           <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
         </li>
         <ul class="sub-menu collapse" id="service">
-          <li>New Service 1</li>
-          <li>New Service 2</li>
-          <li>New Service 3</li>
+          <li>Register PHONEWORD</li>
         </ul>
         <li data-toggle="collapse" data-target="#new" class="collapsed">
             <a href="#"><i class="fa fa-folder fa-lg"></i> Storage <span class="arrow"></span></a>
         </li>
         <ul class="sub-menu collapse" id="new">
-          <li>New New 1</li>
-          <li>New New 2</li>
-          <li>New New 3</li>
+          <li>Add file to IPFS</li>
+          <li>Record Video</li>
+        </ul>
+        <li data-toggle="collapse" data-target="#wallet" class="collapsed">
+            <a href="#"><i class="fa fa-bitcoin fa-lg"></i> Wallet <span class="arrow"></span></a>
+        </li>
+        <ul class="sub-menu collapse" id="wallet">
+          <li ><button type="button" onClick="watchBalance();" style="border:none; background-color: inherit; color: inherit;">Get Balance</button></li>
+          <li>Send Ethereum</li>
+          <li>Request Ethereum</li>
         </ul>
         <li>
           <a href="#">
@@ -225,10 +249,10 @@
         <div class="row" style="background-color: #f7f7f9">
           <div class="col-11 col-sm-11 col-md-11"></div>
           <div class="col-1 col-md-1"><span class="btn pull-right">
-            <span>User</span>
+            <span class="fa fa-user"> User</span>
           </div>
           </div>
-          <section class="row text-center placeholders">
+          <section class="row text-center placeholders" style="display:none">
             <div>
               <button type="button" onClick="watchBalance();">Get balance</button>
             </div>
@@ -250,11 +274,21 @@
                   <video id="my-video" muted="true" autoplay class="my-video p-0 w-100"></video>
                 </td>
               </tr>
+            </table>
+          </section>
+            <section class="row">
+            <table class="w-100">
               <tr style="border-style:solid none none none;border-width:1px">
-                <td style="border-style:solid none none none;border-width:1px">
-                  <span>Chat here : </span>
+                <td colspan="3" style="border-style:solid none none none;border-width:1px">
+                  <span style="display:none">Chat here : </span>
+                  <table class="w-100 text-center dialer-table">
+                    <tr><td colspan="3"><form><div class="form-group"><input type="phone" class="form-control" placeholder="0"></div></form></td></tr>
+                    <tr><td><button class="dialer-button">1</button></td><td><button class="dialer-button">2</button ></td><td><button class="dialer-button">3</button></td></tr>
+                    <tr><td><button class="dialer-button">4</button></td><td><button class="dialer-button">5</button></td><td><button class="dialer-button">6</button></td></tr>
+                    <tr><td><button class="dialer-button">7</button></td><td><button class="dialer-button">8</button></td><td><button class="dialer-button">9</button></td></tr>
+                    <tr><td><button class="dialer-button">*</button></td><td><button class="dialer-button">0</button></td><td><button class="dialer-button">#</button></td></tr>
+                  </table>
                 </td>
-                <td style="border-style:solid none none none;border-width:1px"></td>
                 </tr>
               </table>
               <!--Get local audio/video stream-->

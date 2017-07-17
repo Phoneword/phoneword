@@ -282,7 +282,16 @@
                 <td colspan="3" style="border-style:solid none none none;border-width:1px">
                   <span style="display:none">Chat here : </span>
                   <table class="w-100 text-center dialer-table">
-                    <tr><td colspan="3"><form><div class="form-group"><input type="phone" class="form-control" placeholder="0"></div></form></td></tr>
+                    <div class="form-group row">
+                      <label for="phone-number" class="col-2 col-form-label" style="color: white">Phone Number: </label>
+                      <div class="col-10">
+                        <input class="form-control" type="text" value="1-800-PHONEWORD" id="phone-number">
+                      </div>
+                      <label for="tropo-key" class="col-2 col-form-label" style="color: white">Tropo Key: </label>
+                      <div class="col-10">
+                        <input class="form-control" type="text" value="12345" id="tropo-key">
+                      </div>
+                    </div>
                     <tr><td><button class="dialer-button">1</button></td><td><button class="dialer-button">2</button ></td><td><button class="dialer-button">3</button></td></tr>
                     <tr><td><button class="dialer-button">4</button></td><td><button class="dialer-button">5</button></td><td><button class="dialer-button">6</button></td></tr>
                     <tr><td><button class="dialer-button">7</button></td><td><button class="dialer-button">8</button></td><td><button class="dialer-button">9</button></td></tr>
@@ -325,5 +334,7 @@
         </div>
       </div>
     </div>
+
+    <script src="lib/tropo.js"></script>
   </body>
 </html>

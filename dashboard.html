@@ -9,8 +9,7 @@
     <!--<link rel="icon" href="../../favicon.ico">-->
     <title>Phoneword</title>
 
-      <script src="lib/bundle.js"></script>
-      <script src="lib/watchBalance.js"></script>
+       
       <!-- Todo: bundle these-->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
       <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
@@ -19,7 +18,13 @@
       <script type="text/javascript" src="http://cdn.peerjs.com/0.3/peer.js"></script>
       <script type="text/javascript" src="lib/peer.js"></script>
       <script src="https://use.fontawesome.com/598e365cb7.js"></script>
+      
+
+      <script src="lib/bundle.js"></script>
+      <script src="lib/watchBalance.js"></script> 
       <!-- End Todo-->
+
+
       <style>
         html, body{
           height:100%;
@@ -30,6 +35,9 @@
           background-color: #23282e;
           color: #e1ffff;
           border:none;
+        }
+        .dialer-form{
+          margin:0;
         }
         .dialer-table{
           border-color: #2e353d;
@@ -282,16 +290,19 @@
                 <td colspan="3" style="border-style:solid none none none;border-width:1px">
                   <span style="display:none">Chat here : </span>
                   <table class="w-100 text-center dialer-table">
-                    <div class="form-group row">
-                      <label for="phone-number" class="col-2 col-form-label" style="color: white">Phone Number: </label>
-                      <div class="col-10">
-                        <input class="form-control" type="text" value="1-800-PHONEWORD" id="phone-number">
+                    <form class="form-inline w-100">
+                      <div class="form-group row form-inline w-100 dialer-form">
+                        <label for="phone-number" class="col-2 col-form-label" style="color: white">Phone Number: </label>
+                        <div class="col-10">
+                          <input class="  form-control" style="width:80%" type="text" value="1-800-PHONEWORD" id="phone-number">
+                          <button style="width:15%" id="dialOut">Call</button>
+                        </div>
+                        <!--<label for="tropo-key" class="col-2 col-form-label" style="color: white">Tropo Key: </label>
+                        <div class="col-10">
+                          <input class="form-control" type="text" value="12345" id="tropo-key">
+                        </div>-->
                       </div>
-                      <label for="tropo-key" class="col-2 col-form-label" style="color: white">Tropo Key: </label>
-                      <div class="col-10">
-                        <input class="form-control" type="text" value="12345" id="tropo-key">
-                      </div>
-                    </div>
+                    </form>
                     <tr><td><button class="dialer-button">1</button></td><td><button class="dialer-button">2</button ></td><td><button class="dialer-button">3</button></td></tr>
                     <tr><td><button class="dialer-button">4</button></td><td><button class="dialer-button">5</button></td><td><button class="dialer-button">6</button></td></tr>
                     <tr><td><button class="dialer-button">7</button></td><td><button class="dialer-button">8</button></td><td><button class="dialer-button">9</button></td></tr>
@@ -334,7 +345,8 @@
         </div>
       </div>
     </div>
-
+   <script>
     
+   </script>
   </body>
 </html>

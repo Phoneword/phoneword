@@ -5,6 +5,7 @@
   "main": "main.js",
   "dependencies": {
     "http": "^0.0.0",
+    "jquery": "^3.2.1",
     "tropo-webapi": "^1.2.0",
     "web3": "^0.19.1"
   },

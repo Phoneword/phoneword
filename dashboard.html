@@ -290,12 +290,16 @@
                 <td colspan="3" style="border-style:solid none none none;border-width:1px">
                   <span style="display:none">Chat here : </span>
                   <table class="w-100 text-center dialer-table">
-                    <form class="form-inline w-100">
+                    <form id="dialer" class="form-inline w-100">
                       <div class="form-group row form-inline w-100 dialer-form">
                         <label for="phone-number" class="col-2 col-form-label" style="color: white">Phone Number: </label>
                         <div class="col-10">
-                          <input class="  form-control" style="width:80%" type="text" value="1-800-PHONEWORD" id="phone-number">
-                          <button style="width:15%" type="button" id="dialOut">Call</button>
+                          <input class="form-control" style="display:none" type="text" name="action" value="create">
+                          <input class="form-control" style="display:none" type="text" name="token" value="474c4b6e6b6c6f5942586c4b456269505649685153724d4674756550764f644f5149647a63424b644664766f">
+                          <input class="  form-control" style="width:80%" type="text" value="15555555555" name="numbertodial" id="phone-number">
+                          <input class="form-control" style="display:none" type="text" name="customername" value=".">
+                          <input class="form-control"  type="text" name="msg" value="test">
+                          <button style="width:15%" type="submit" id="dialOut">Call</button>
                         </div>
                         <!--<label for="tropo-key" class="col-2 col-form-label" style="color: white">Tropo Key: </label>
                         <div class="col-10">

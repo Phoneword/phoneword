@@ -13,7 +13,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node tropo.js"
+    "start": "node tropo.js",
+    "build": "browserify --exclude tropo.js lib/main.js > lib/bundle.js"
   },
   "author": "Jaycen Horton",
   "license": "ISC",

@@ -40,6 +40,7 @@ let getWeb3 = new Promise(function(resolve, reject) {
       }
 
       console.log('No web3 instance injected, using Local web3.');
+      alert("No web3 instance injected. Are you running either Metamask or a local Ethereum provider such as geth with an unlocked account? If not please do so and reload the page. This requirement will be removed in a future release.")
 
       resolve(store.dispatch(web3Initialized(results)))
     }

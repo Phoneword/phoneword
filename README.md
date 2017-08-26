@@ -9,3 +9,8 @@ The goal is to:
 * Implement a phone/identity/user registry in IPFS, and engage in onversations and other collaboration
 * Register phonewords
 * Dispute phoneword registration
+## Install/Dev Setup
+1. `truffle compile`
+1. `truffle migrate`
+1. `truffle deploy`
+1. `npm run dev`

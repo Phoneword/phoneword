@@ -1,0 +1,32 @@
+{
+  "name": "phoneword",
+  "version": "0.0.1",
+  "description": "phoneword app",
+  "main": "main.js",
+  "dependencies": {
+    "http": "^0.0.0",
+    "http-server": "^0.10.0",
+    "jquery": "^3.2.1",
+    "tropo-webapi": "^1.2.0",
+    "web3": "^0.19.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node tropo.js",
+    "build": "browserify --exclude tropo.js lib/main.js > lib/bundle.js"
+  },
+  "author": "Jaycen Horton",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Phoneword/phoneword.git"
+  },
+  "keywords": [
+    "phoneword"
+  ],
+  "bugs": {
+    "url": "https://github.com/Phoneword/phoneword/issues"
+  },
+  "homepage": "https://github.com/Phoneword/phoneword#readme"
+}

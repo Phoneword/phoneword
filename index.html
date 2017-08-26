@@ -1,107 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <style>
-            html, body, .container-fluid, .row-fluid { height:100%;}
-        </style>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="lib/bundle.js"></script>
-        <script src="lib/watchBalance.js"></script>
-
-        <!-- Todo: bundle these-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="http://cdn.peerjs.com/0.3/peer.js"></script>
-        <script type="text/javascript" src="lib/peer.js"></script>
-        <!-- End Todo-->
-   
-    </head>
-    <body >
-        <div class="container-fluid">            
-            <div class="row row-fluid" >            
-                <nav class="col-2 col-md-2 col-xs-2 sidebar" style="background-color:darkslategrey; ">
-                    <h2>Phoneword</h2>
-                    <ul class="nav nav-pills flex-column">
-                        <li class="nav-item">
-                        <a class="nav-link " href="#">Identity <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="#">Wallet</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="#">Call</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="#">Record</a>
-                        </li>
-                    </ul>
-                </nav>
-                <main class="col-10 col-md-10 col-xs-10">   
-                    <div class="row" style="background-color: #f7f7f9">
-                        <div class="col-11 col-sm-11 col-md-11">
-                        </div>
-                        <div class="col-1 col-md-1"><span class=" btn pull-right">
-                            <span>
-                                User
-                            </span>
-                        </div>
-
-                    </div>                
-                    <section class="row text-center placeholders">
-                        <!-- Todo: React.js : loading screen -->
-                        <div>
-                            <button type="button" onClick="watchBalance();">Get balance</button>
-                        </div>
-                        </br>
-                        <div></div>
-                        <div id="coinbase"></div>
-                        <div id="original"></div>
-                        <div id="current"></div>
-                        <div id="diff"></div>
-                        <!-- End Todo -->
-                    </section>
-                    <section class="row">
-                        <!--Video area -->
-                        <div id="video-container" class="col-12 col-md-12 col-xs-12 container-fluid" style=" padding:0px !important;">
-                            <video id="their-video" autoplay class="their-video col-6"></video>
-                            <video id="my-video" muted="true" autoplay class="my-video col-6"></video> 
-                        </div>
-                        <!--Get local audio/video stream-->
-                    </section>
-                    <section class="row">
-                        <div id="step1" class="col-12 col-md-12 col-xs-12">
-                            <p>Please click 'allow' on the top of the screen so we can access your webcam and microphone for calls</p>
-                            <div id="step1-error">
-                                <!-- Todo: add error if webcam mic not accesible
-                                <p>Failed to access the webcam and microphone. Make sure to run this demo on an http server and click allow when asked for permission by the browser.</p>
-                                -->
-                                <a href="#" id="step1-retry" class="button">Try again</a>
-                                <!-- End todo -->
-                            </div>
-                        </div>
-                    </section>
-                    <section class="row">
-                        <!--Make calls to others-->
-                        <div id="step2" class="col-12 col-md-12 col-xs-12">
-                            <p>Your id: <span id="my-id">...</span></p>
-                            <p><span id="subhead">Make a call</span><br>
-                                <input type="text" placeholder="Call user id..." id="callto-id">
-                                <a href="#" id="make-call">Call</a>
-                            </p>
-                        </div>
-                    </section>
-                    <section class="row">
-                        <!--Call in progress-->
-                        <div id="step3"  class="col-12 col-md-12 col-xs-12">
-                            <p>Currently in call with <span id="their-id">...</span></p>
-                            <p><a href="#" id="end-call">End call</a></p>
-                        </div>
-                    </section>
-                </main>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="icon" href="../../favicon.ico">-->
+    <title>Phoneword</title>
+    <!-- Todo: bundle these-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://cdn.peerjs.com/0.3/peer.js"></script>
+    <script type="text/javascript" src="lib/peer.js"></script>
+    <script src="https://use.fontawesome.com/598e365cb7.js"></script> 
+    <!-- End Todo-->
+    <link rel="stylesheet" type="text/css" href="/lib/dashboard.css">
+  </head>
+  <body>
+    <div class="nav-side-menu">
+      <div class="brand">PHONEWORD</div>
+      <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+    <div class="menu-list">
+      <ul id="menu-content" class="menu-content collapse out">
+        <li>
+          <a href="#">
+            <i class="fa fa-dashboard fa-lg"></i> Dashboard
+          </a>
+        </li>
+        <li data-toggle="collapse" data-target="#products" class="collapsed active">
+          <a href="#"><i class="fa fa-phone fa-lg"></i> Connect to Peer <span class="arrow"></span></a>
+        </li>
+        <ul class="sub-menu collapse" id="products">
+          <li class="active"><a href="#">Dialer</a></li>
+          <li><a href="#">Lookup</a></li>                  
+        </ul>
+        <li data-toggle="collapse" data-target="#service" class="collapsed">
+          <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
+        </li>
+        <ul class="sub-menu collapse" id="service">
+          <li>Register PHONEWORD</li>
+        </ul>
+        <li data-toggle="collapse" data-target="#new" class="collapsed">
+            <a href="#"><i class="fa fa-folder fa-lg"></i> Storage <span class="arrow"></span></a>
+        </li>
+        <ul class="sub-menu collapse" id="new">
+          <li>Add file to IPFS</li>
+          <li>Record Video</li>
+        </ul>
+        <li data-toggle="collapse" data-target="#wallet" class="collapsed">
+            <a href="#"><i class="fa fa-bitcoin fa-lg"></i> Wallet <span class="arrow"></span></a>
+        </li>
+        <ul class="sub-menu collapse" id="wallet">
+          <li ><button type="button" onClick="watchBalance();" style="border:none; background-color: inherit; color: inherit;">Get Balance</button></li>
+          <li>Send Ethereum</li>
+          <li>Request Ethereum</li>
+        </ul>
+        <li>
+          <a href="#">
+            <i class="fa fa-user fa-lg"></i> Identity
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-users fa-lg"></i> Users
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Second column/Main content -->
+  <div class="container" id="main">
+    <!--Top user nav bar -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row" style="background-color: #f7f7f9">
+          <div class="col-11 col-sm-11 col-md-11"></div>
+          <div class="col-1 col-md-1"><span class="btn pull-right">
+            <span class="fa fa-user"> User</span>
+          </div>
+          </div>
+          <section class="row text-center placeholders" style="display:none">
+            <div>
+              <button type="button" onClick="watchBalance();">Get balance</button>
             </div>
+            <div></div>
+            <div id="coinbase"></div>
+            <div id="original"></div>
+            <div id="current"></div>
+            <div id="diff"></div>
+          </section>          
+          <!-- Todo: React.js : loading screen -->
+          <section class="row">
+            <!--Video area -->
+            <table>
+              <tr class="w-100">
+                <td class="w-50">
+                  <video id="their-video" autoplay class="their-video p-0 w-100"></video>
+                </td>
+                <td class="w-50">
+                  <video id="my-video" muted="false" autoplay class="my-video p-0 w-100"></video>
+                </td>
+              </tr>
+            </table>
+          </section>
+            <section class="row">
+            <table class="w-100">
+              <tr style="border-style:solid none none none;border-width:1px">
+                <td colspan="3" style="border-style:solid none none none;border-width:1px">
+                  <span style="display:none">Chat here : </span>
+                  <table class="w-100 text-center dialer-table">
+                    <form id="dialer" class="form-inline w-100">
+                      <div class="form-group row form-inline w-100 dialer-form">
+                        <label for="phone-number" class="col-2 col-form-label" style="color: white">Phone Number: </label>
+                        <div class="col-10">
+                          <input class="form-control" style="display:none" type="text" name="action" value="create">
+                          <input class="form-control" style="display:none" type="text" name="token" value="474c4b6e6b6c6f5942586c4b456269505649685153724d4674756550764f644f5149647a63424b644664766f">
+                          <input class="  form-control" style="width:80%" type="text" value="15555555555" name="numbertodial" id="phone-number">
+                          <input class="form-control" style="display:none" type="text" name="customername" value=".">
+                          <input class="form-control"  type="text" name="msg" value="test">
+                          <button style="" type="submit" id="dialOut">Send Eth and SMS receipt</button>
+                        </div>
+                        <!--<label for="tropo-key" class="col-2 col-form-label" style="color: white">Tropo Key: </label>
+                        <div class="col-10">
+                          <input class="form-control" type="text" value="12345" id="tropo-key">
+                        </div>-->
+                      </div>
+                    </form>
+                    <tr><td><button class="dialer-button">1</button></td><td><button class="dialer-button">2</button ></td><td><button class="dialer-button">3</button></td></tr>
+                    <tr><td><button class="dialer-button">4</button></td><td><button class="dialer-button">5</button></td><td><button class="dialer-button">6</button></td></tr>
+                    <tr><td><button class="dialer-button">7</button></td><td><button class="dialer-button">8</button></td><td><button class="dialer-button">9</button></td></tr>
+                    <tr><td><button class="dialer-button">*</button></td><td><button class="dialer-button">0</button></td><td><button class="dialer-button">#</button></td></tr>
+                  </table>
+                </td>
+                </tr>
+              </table>
+              <!--Get local audio/video stream-->
+          </section>
+          <section class="row">
+            <div id="step1" class="col-12 col-md-12 col-xs-12">
+              <!--<p>Please click 'allow' on the top of the screen so we can access your webcam and microphone for calls</p>-->
+              <div id="step1-error">
+                <!-- Todo: add error if webcam mic not accesible
+                <p>Failed to access the webcam and microphone. Make sure to run this demo on an http server and click allow when asked for permission by the browser.</p>
+                -->
+                <a href="#" id="step1-retry" class="button">Try again</a>
+                <!-- End todo -->
+              </div>
+            </div>
+          </section>
+          <!--Make calls to others-->
+          <section class="row">                        
+            <div id="step2" class="col-12 col-md-12 col-xs-12">
+                <p>Your id: <span id="my-id">...</span></p>
+                <p><span id="subhead">Make a call</span><br>
+                  <input type="text" placeholder="Call user id..." id="callto-id">
+                  <a href="#" id="make-call">Call</a>
+                </p>
+            </div>
+          </section>
+          <!--Call in progress-->
+          <section class="row">                        
+            <div id="step3"  class="col-12 col-md-12 col-xs-12">
+              <p>Currently in call with <span id="their-id">...</span></p>
+              <p><a href="#" id="end-call">End call</a></p>
+            </div>
+          </section>
         </div>
-    </body>
+      </div>
+    </div>
+    <script src="lib/bundle.js"></script>
+    <script src="lib/app.js"></script>
+    <script src="lib/watchBalance.js"></script> 
+  </body>
 </html>

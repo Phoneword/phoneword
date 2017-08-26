@@ -14,3 +14,6 @@ The goal is to:
 1. `truffle migrate`
 1. `truffle deploy`
 1. `npm run start`
+## Testing
+1. `npm run test`
+1. `truffle test`

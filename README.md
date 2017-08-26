@@ -13,4 +13,4 @@ The goal is to:
 1. `truffle compile`
 1. `truffle migrate`
 1. `truffle deploy`
-1. `npm run dev`
+1. `npm run start`
